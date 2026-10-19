@@ -7,6 +7,7 @@
     >
 
     <com.google.android.material.card.MaterialCardView
+        android:id="@+id/gameCard"
         style="@style/Widget.Material3.CardView.Filled"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -60,6 +61,7 @@
                         android:layout_height="wrap_content"
                         android:text="Genre"
                         android:textColor="@color/white"
+                        android:clickable="false"
                         app:ensureMinTouchTargetSize="false"
                         app:chipBackgroundColor="@color/design_default_color_primary" />
 
@@ -69,8 +71,11 @@
                         android:layout_weight="1" />
 
                     <ImageView
-                        android:layout_width="48dp"
-                        android:layout_height="48dp" />
+                        android:id="@+id/platformImageView"
+                        android:layout_width="32dp"
+                        android:layout_height="32dp"
+                        android:src="@drawable/ic_platform_windows_desktop"
+                        app:tint="@color/design_default_color_primary" />
 
                 </LinearLayout>
             </LinearLayout>

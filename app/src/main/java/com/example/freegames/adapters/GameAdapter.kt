@@ -3,6 +3,7 @@ package com.example.freegames.adapters
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.example.freegames.R
 import com.example.freegames.data.Game
 import com.example.freegames.databinding.ItemGameBinding
 import com.squareup.picasso.Picasso
@@ -20,7 +21,7 @@ class GameAdapter(
     override fun onBindViewHolder(holder: GameViewHolder, position: Int) {
         val game = items[position]
         holder.render(game)
-        holder.itemView.setOnClickListener {
+        holder.binding.gameCard.setOnClickListener {
             onItemClick(position)
         }
     }
@@ -39,8 +40,15 @@ class GameViewHolder(val binding: ItemGameBinding) : RecyclerView.ViewHolder(bin
     fun render(game: Game) {
         binding.titleTextView.text = game.title
         binding.descriptionTextView.text = game.shortDescription
-        binding.platformTextView.text = game.platform
         binding.genreChip.text = game.genre
+
+        val platformResId = if (game.platform.contains("Windows")){
+            R.drawable.ic_platform_windows_desktop
+        } else {
+            R.drawable.ic_platform_web
+        }
+        binding.platformImageView.setImageResource(platformResId)
+
         Picasso.get().load(game.thumbnail).into(binding.thumbnailImageView)
     }
 }
