@@ -1,5 +1,6 @@
 package com.example.freegames.activities
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.Menu
@@ -41,8 +42,11 @@ class MainActivity : AppCompatActivity() {
         }
         //Configuramos el recyclerView
         adapter = GameAdapter(gameList) { position ->
-            val game = gameList[position]
-            Toast.makeText(this, game.title, Toast.LENGTH_SHORT).show()
+            val game = filteredGameList[position]
+
+            val intent = Intent(this, DetailActivity::class.java)
+            intent.putExtra(DetailActivity.EXTRA_GAME_ID, game.id)
+            startActivity(intent)
         }
 
         binding.recyclerView.adapter = adapter

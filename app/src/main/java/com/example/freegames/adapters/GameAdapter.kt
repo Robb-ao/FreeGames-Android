@@ -36,7 +36,7 @@ class GameAdapter(
 }
 
 class GameViewHolder(val binding: ItemGameBinding) : RecyclerView.ViewHolder(binding.root) {
-
+//1:11
     fun render(game: Game) {
         binding.titleTextView.text = game.title
         binding.descriptionTextView.text = game.shortDescription
